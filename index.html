@@ -1,0 +1,57 @@
+import 'package:first_app/Widget/my_appbar.dart';
+import 'package:flutter/material.dart';
+import 'package:first_app/quiz_page.dart';
+
+class Lesson1 extends StatelessWidget {
+  const Lesson1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: myAppBar('الدرس الأول: الخلايا'),
+
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: ListView(
+          padding: const EdgeInsets.all(20),
+
+          children: [
+            ClipRRect(borderRadius: BorderRadius.circular(15)),
+            const SizedBox(height: 20),
+            const Text(
+              'ما هي الخلية؟',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'الخلية هي تقاطع الصف مع العمود، كل خلية لها اسم فريد ',
+              style: TextStyle(fontSize: 18),
+            ),
+            const SizedBox(height: 20),
+            // زر تفاعلي
+            MaterialButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/Lesson2');
+              },
+              color: Colors.green,
+              textColor: Colors.white,
+              child: const Text('الذهاب للدرس الثاني'),
+            ),
+
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const QuizPage()),
+                );
+              },
+              color: Colors.green,
+              textColor: Colors.white,
+              child: const Text('ابدأ الاختبار السريع'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
